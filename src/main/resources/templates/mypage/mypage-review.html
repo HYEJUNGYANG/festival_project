@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 - 리뷰 내역</title>
+    <link rel="stylesheet" th:href="@{/css/mypage/mypage-review.css}" />
+    <script defer th:src="@{/js/mypage/mypage-review.js}"></script>
+    <script
+      src="https://kit.fontawesome.com/082a4accbb.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav-container">
+        <div class="nav-align">
+          <div class="logo-con">
+            <div class="logo-align">
+              <a href="/" class="logo"
+                ><img th:src="@{/img/logo/logo.svg}" alt=""
+              /></a>
+            </div>
+          </div>
+          <p class="mypage">마이페이지</p>
+          <ul class="list">
+            <li><a href="/mypage/profile">정보수정</a></li>
+            <li><a href="/mypage/reservation">예약내역</a></li>
+            <li><a class="sel" href="/mypage/review">리뷰내역</a></li>
+            <li><a href="/mypage/favorite">관심목록</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main-container">
+        <div class="main-align">
+          <div class="mypage-title">리뷰 내역</div>
+
+          <!-- 리뷰 내역 있을 때 -->
+          <div class="review-con" >
+            <ul class="review-list">
+              <!-- 01 -->
+              <li th:each="dto : ${dto}">
+                <div class="list-align"th:if="${!#lists.isEmpty(dto)}">
+                  <a th:href="@{/experience/detail(idx=${dto.e_idx})}" class="e-name">
+                    [[${dto.e_name}]]
+                  </a>
+                  <div class="btn-con">
+                    <button th:data-idx="${dto.idx}" class="btn-modify">수정</button>
+                    <button th:data-idx="${dto.idx}" class="btn-del">삭제</button>
+
+                    <!--<button th:onclick="|location.href='@{/mypage/review/delete(idx=${dto.idx})}'|" class="btn-del">삭제</button>-->
+                  </div>
+                  <div class="info-con">
+                    <div class="star-con">
+                      <!-- 빈 별 -->
+                      <!-- <i class="fa-regular fa-star"></i> -->
+                      <!-- 채워진 별 -->
+                      <!-- <i class="fa-solid fa-star"></i> -->
+                      <div th:if="${dto.star != 0}" th:each="num : ${#numbers.sequence(1, dto.star)}">
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <div th:if="${5 - dto.star != 0}" th:each="num : ${#numbers.sequence(1, (5 - dto.star))}">
+                        <i class="fa-regular fa-star"></i>
+                      </div>
+                    </div>
+                    <div class="date-con">
+                      <p class="date">[[${dto.date}]]</p>
+                    </div>
+                  </div>
+                  <p class="review-content">[[${dto.content}]]</p>
+                </div>
+              </li>
+              <!-- 리뷰 내역 없을 때 -->
+               <div class="review-con none" th:if="${#lists.isEmpty(dto)}">
+                <p class="review-none">리뷰 내역이 존재하지 않습니다.</p>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,345 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+  padding-top: var(--header-height);
+}
+
+.main-container .main-align {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.main-container .main-align .title {
+  margin-top: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.main-container .main-align .count-btn-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.main-container .main-align .count-btn-con .count {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #555;
+}
+
+.main-container .main-align .count-btn-con .count span {
+  font-weight: 600;
+  color: #333;
+}
+
+.main-container .main-align .count-btn-con .btn-write {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1.5px solid var(--main-color);
+  padding: 0.8rem 1.8rem;
+  color: var(--main-color);
+  border-radius: 0.3rem;
+}
+
+.main-container .main-align .count-btn-con .btn-write:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.main-container .main-align .qna-list-con {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.main-container .main-align .qna-list-con .list-con-align {
+  width: 100%;
+  border-top: 1.5px solid black;
+}
+
+.main-container .main-align .qna-list-con .list-con-align .list-title {
+  border-bottom: 1px solid #999;
+  font-weight: bold;
+}
+
+.main-container .main-align .qna-list-con .list-con-align .list:last-child {
+  border-bottom: 1px solid #999;
+}
+
+.main-container .main-align .qna-list-con .list-con-align .list-title,
+.main-container .main-align .qna-list-con .list-con-align .list .list-align {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .list-align:hover {
+  /* background-color: #f4f4f49f; */
+}
+
+.main-container .main-align .qna-list-con .qna-state {
+  width: 10%;
+  padding: 1.2rem 0.5rem;
+}
+
+.main-container .main-align .qna-list-con .qna-title {
+  width: 66%;
+  padding: 1.2rem 1.2rem;
+}
+
+.main-container .main-align .qna-list-con .list .qna-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main-container .main-align .qna-list-con .list .qna-title p.secret,
+.main-container .main-align .qna-list-con .list .qna-title .fa-lock {
+  color: #cbcbcb;
+}
+
+.main-container .main-align .qna-list-con .list .qna-title p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-container .main-align .qna-list-con .qna-writer,
+.main-container .main-align .qna-list-con .qna-date {
+  width: 12%;
+  padding: 1.2rem 0.5rem;
+}
+
+.main-container .main-align .qna-list-con .qna-state,
+.main-container .main-align .qna-list-con .list-title .qna-title,
+.main-container .main-align .qna-list-con .qna-writer,
+.main-container .main-align .qna-list-con .qna-date {
+  text-align: center;
+}
+
+.main-container .main-align .qna-list-con .list-con-align .list-title .th {
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply {
+  display: none;
+  background-color: rgba(239, 239, 239, 0.505);
+  border-top: 1px solid #e3e3e3;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply.show {
+  display: block;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con {
+  width: 90%;
+  margin-left: 10%;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-title {
+  font-weight: 600;
+  word-break: break-all;
+  padding: 1.2rem;
+  padding-bottom: 0;
+  padding-right: calc(24% + 1.2rem);
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-content {
+  font-weight: 300;
+  word-break: break-all;
+  padding: 1.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0;
+  padding-right: calc(24% + 1.2rem);
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-btn-con {
+  margin-left: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-btn-con
+  button {
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-btn-con
+  button:hover {
+  text-decoration: underline;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .detail-con
+  .detail-btn-con,
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .reply-con {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .reply-con
+  .reply-content {
+  width: 76%;
+  font-weight: 300;
+  word-wrap: break-word;
+  padding: 1.2rem;
+  padding-left: calc(10% + 1.2rem);
+}
+
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .reply-con
+  .reply-writer,
+.main-container
+  .main-align
+  .qna-list-con
+  .list-con-align
+  .list
+  .qna-detail-reply
+  .reply-con
+  .reply-date {
+  text-align: center;
+  width: 12%;
+  padding: 1.2rem 0.5rem;
+}
+
+/* page */
+.main-container .main-align .page-btn-con {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.main-container .main-align .page-btn-con .prev-btn,
+.main-container .main-align .page-btn-con .next-btn {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  font-weight: 400;
+}
+
+.main-container .main-align .page-btn-con .prev-btn:hover,
+.main-container .main-align .page-btn-con .next-btn:hover,
+.main-container .main-align .page-btn-con .page:hover {
+  background-color: #f5f5f5;
+}
+
+.main-container .main-align .page-btn-con .page {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 0.2rem;
+}

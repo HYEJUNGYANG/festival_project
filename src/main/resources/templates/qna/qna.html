@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q&A</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" th:href="@{/css/qna/qna.css}" />
+  <script defer th:src="@{/js/header.js}"></script>
+  <script defer th:src="@{/js/qna/qna.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a th:href="@{/}" class="logo"
+      ><img th:src="@{/img/logo/logo.svg}" alt=""
+      /></a>
+    </div>
+    <nav class="nav">
+      <a href="/festival" class="nav-list">축제</a>
+      <a href="/experience" class="nav-list">체험</a>
+      <a th:href="@{/qna}" class="nav-list">Q&A</a>
+      <a href="/notice" class="nav-list">공지사항</a>
+    </nav>
+    <div class="header-right">
+      <a href="/search" class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- 로그인 X -->
+      <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+      <!-- 로그인 O -->
+      <div class="user-profile" sec:authorize="isAuthenticated()">
+        <i class="fa-regular fa-circle-user"></i>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
+    <div class="my-page" >
+      <ul class="my-page-list">
+        <li><a href="/mypage/profile">정보수정</a></li>
+        <li><a href="/mypage/reservation">예약내역</a></li>
+        <li><a href="/mypage/review">리뷰내역</a></li>
+        <li><a href="/mypage/favorite">관심목록</a></li>
+        <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- main -->
+<div class="main-container">
+  <div class="main-align">
+    <p class="title">Q&A</p>
+    <div class="count-btn-con">
+      <p class="count">총 <span>[[${count}]]</span>의 Q&A</p>
+      <button sec:authorize="isAuthenticated()" class="btn-write">Q&A 작성하기</button>
+    </div>
+    <div class="qna-list-con">
+      <div class="list-con-align">
+        <div class="list-title">
+          <div class="th qna-state">답변상태</div>
+          <div class="th qna-title">제목</div>
+          <div class="th qna-writer">작성자</div>
+          <div class="th qna-date">작성일</div>
+        </div>
+        <!-- 01 -->
+        <div class="list" th:each="dto: ${result.dtoList}">
+          <div class="list-align">
+            <div class="qna-state" th:if="${dto.yn} == 'y'">답변완료</div>
+
+            <div class="qna-state" th:unless="${dto.yn} == 'y'">답변대기</div>
+
+            <div class="qna-title" th:if="${dto.priv} == 'y' and ${dto.u_id == user_id}"><!--본인이 작성한 비밀글-->
+              <!-- 본인이 작성한 비밀글이면 제목 다 보이고 옆에 자물쇠 아이콘 -->
+              <!-- 다른 사람이 작성한 비밀글 or 로그인 안되어 있을 때는 -->
+              <!-- 비밀글입니다. 옆에 자물쇠 아이콘 넣기 -->
+              <!-- 타인이 작성한 비밀글은 p태그에 class="secret" 넣어주기 -->
+              <p>
+                [[${dto.title}]]
+              </p>
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="qna-title" th:if="${dto.priv} == 'y' and ${dto.u_id != user_id}"><!--타인이 작성한 비밀글-->
+              <p class="secret">
+                비밀글입니다.
+              </p>
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="qna-title" th:if="${dto.priv} == 'n' "><!--일반글-->
+              <p>
+                [[${dto.title}]]
+              </p>
+            </div>
+
+            <div class="qna-writer">[[${dto.u_nick}]]</div>
+            <div class="qna-date">[[${dto.date}]]</div>
+          </div>
+          <div class="qna-detail-reply">
+            <div class="detail-con">
+              <p class="detail-title">
+                [[${dto.title}]]
+              </p>
+              <p class="detail-content">
+                [[${dto.q_content}]]
+              </p>
+              <div class="detail-btn-con" th:if="${dto.u_id == user_id}"> <!--로그인한 상태에서 자기글일때-->
+                <button th:onclick="|location.href='@{/qna/modify(idx=${dto.idx})}'|" class="btn-modify">수정</button>
+                <button class="btn-delete" th:data-idx="${dto.idx}">삭제</button>
+              </div>
+              <div class="detail-btn-con" th:unless="${dto.u_id == user_id}"> <!--타인의 글일때-->
+
+              </div>
+            </div>
+            <div class="reply-con" th:if="${dto.yn} == 'y'">
+              <div class="reply-content">
+                [[${dto.answer.a_content}]]
+              </div>
+              <div class="reply-writer">관리자</div>
+              <div class="reply-date">[[${dto.answer.date}]]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-btn-con">
+      <a th:href="@{/qna(page= ${result.start -1})}" class="prev-btn" th:if="${result.prev}">
+        <i class="fa-solid fa-chevron-left">
+        </i>
+        이전
+      </a>
+      <a th:href="@{/qna(page = ${page})}" class="page"  th:classappend=" 'page-item ' + ${result.page == page?'active':''} "
+           th:each="page: ${result.pageList}">
+        [[${page}]]
+      </a>
+      <a th:href="@{/qna(page= ${result.end + 1})}" class="next-btn" th:if="${result.next}">
+        다음
+        <i class="fa-solid fa-chevron-right" >
+        </i>
+      </a>
+    </div>
+  </div>
+</div>
+<script th:inline="javascript">
+  const contents = document.querySelectorAll('.detail-content');
+  const btnModifys = document.querySelectorAll('.btn-delete');
+  contents.forEach((content) => {
+    const replaceLt = content.innerHTML.replace(/&lt;/gi, "<");
+    const replaceRt = replaceLt.replace(/&gt;/gi, ">");
+    content.innerHTML = replaceRt;
+  })
+
+  btnModifys.forEach((modify, idx) => {
+    modify.addEventListener('click', () => {
+      const idx = modify.dataset.idx;
+      if (confirm('정말 삭제하시겠습니까?')) {
+        location.href = `/qna/qna_delete?idx=${idx}`;
+      }
+    })
+  })
+  confirm
+</script>
+</body>
+</html>

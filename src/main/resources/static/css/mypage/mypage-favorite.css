@@ -1,0 +1,245 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'SangSangRock';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/SangSangRockOTF.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.container .nav-container {
+  width: 12%;
+  height: 100vh;
+  background-color: #dcbaffb8;
+  box-shadow: 5px 0 10px rgba(174, 174, 174, 0.25);
+  /* box-shadow: inset 0 0 10px red; */
+}
+
+.container .nav-container .nav-align {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container .nav-container .nav-align .logo-con {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.container .nav-container .nav-align .logo-con .logo-align {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container .nav-container .nav-align .logo-con .logo-align .logo {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.container .nav-container .nav-align .mypage {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 4rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #333;
+}
+
+.container .nav-container .nav-align .list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .nav-container .nav-align .list li a {
+  display: block;
+  cursor: pointer;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+  padding: 1rem;
+  border-bottom: 1.5px solid transparent;
+}
+
+.container .nav-container .nav-align .list li a.sel {
+  color: black;
+  font-weight: 600;
+}
+
+.container .nav-container .nav-align .list li a:hover {
+  padding: 0;
+  margin: 1rem;
+  border-bottom: 1.5px solid black;
+}
+
+.container .main-container {
+  width: 88%;
+}
+
+.container .main-container .main-align {
+  width: 80%;
+  /* height: 80vh; */
+  margin: 0 auto;
+}
+
+.container .main-container .main-align .mypage-title {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: 600;
+  padding: 0 1.2rem;
+  box-shadow: inset 0 -23px 0 #f2d0ffb8;
+}
+
+.main-container .main-align .contents-align {
+  width: 100%;
+  height: 80vh;
+  margin: 0 auto;
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  overflow: scroll;
+}
+
+.main-container .main-align .contents-align .contents {
+  /* cursor: pointer; */
+  box-sizing: border-box;
+  position: relative;
+  width: 21%;
+  margin-top: 2rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  transition: transform transform 0.2s;
+}
+
+.main-container .main-align .contents-align .contents .contents-area {
+  position: absolute;
+  z-index: 10;
+  top: 0.6rem;
+  left: 0.6rem;
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 0.8rem;
+}
+
+.main-container .main-align .contents-align .contents .contents-img-con {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-container .main-align .contents-align .contents .contents-img-con img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  vertical-align: bottom;
+  transition: transform 0.3s;
+}
+
+.main-container
+  .main-align
+  .contents-align
+  .contents
+  .contents-img-con
+  img:hover {
+  transform: scale(1.5);
+  transition: 0.3s;
+}
+
+.main-container .main-align .contents-align .contents .contents-info-con {
+  width: 100%;
+  padding: 0 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border: 1.5px solid #999;
+  border-top: none;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}
+
+.main-container
+  .main-align
+  .contents-align
+  .contents
+  .contents-info-con
+  .info-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+.main-container
+  .main-align
+  .contents-align
+  .contents
+  .contents-info-con
+  .heart {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.main-container
+  .main-align
+  .contents-align
+  .contents
+  .contents-info-con
+  .heart:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.main-container
+  .main-align
+  .contents-align
+  .contents
+  .contents-info-con
+  .heart
+  .fa-heart {
+  font-size: 1.8rem;
+  color: rgb(255, 106, 106);
+}

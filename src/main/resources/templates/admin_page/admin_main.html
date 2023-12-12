@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="content">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/../assets/vendor/bootstrap/css/bootstrap.min.css}">
+    <link th:href="@{/assets/vendor/fonts/circular-std/style.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/../assets/libs/css/style.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/fonts/fontawesome/css/fontawesome-all.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/charts/chartist-bundle/chartist.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/charts/morris-bundle/morris.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/charts/c3charts/c3.css}">
+    <link rel="stylesheet" th:href="@{/../assets/vendor/fonts/flag-icon-css/flag-icon.min.css}">
+    <title>Admin_Main Page</title>
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a th:href="@{/admin_page/admin_main}"><img th:src="@{/assets/images/logo.png}" style="width:30%; padding:2%"/></a>
+        </nav>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>TTTTTTTTTT</a>
+                            <div id="submenu-5" class="collapse submenu" style="">-->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/user_list}"> <i class="fa fa-fw fa-user-circle"></i>유저리스트</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/festival_list}"><i class="fas fa-lightbulb"></i>축제리스트</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/exp_list}"><i class="fa fa-fw fa-rocket"></i>체험리스트</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/reserve_list}"><i class="fab fa-fw fa-wpforms"></i>예약리스트</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/notice_list}"><i class="fas fa-fw fa-file"></i>공지사항</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/qa_list}"><i class="fas fa-comment"></i>Q & A</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/admin_page/review_list}"><i class="fas fa-edit"></i>체험리뷰</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-out-alt"></i>로그인</a>
+                                </li>
+                            </ul>
+                            <!--</div>-->
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- four widgets   -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- total views   -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-inline-block">
+                                    <h5 class="text-muted" style="font-family: 'EASTARJET-Medium';">총 가입자</h5>
+                                    <h2 class="mb-0">[[${user_count}]]</h2>
+                                </div>
+                                <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                    <i class="fas fa-users fa-fw fa-sm text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end total views   -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- total followers   -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-inline-block">
+                                    <h5 class="text-muted">축제 게시글</h5>
+                                    <h2 class="mb-0">[[${fes_count}]]</h2>
+                                </div>
+                                <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
+                                    <i class="fab fa-fly fa-fw fa-sm text-brand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end total followers   -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- partnerships   -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-inline-block">
+                                    <h5 class="text-muted">체험 게시글</h5>
+                                    <h2 class="mb-0">[[${exp_count}]]</h2>
+                                </div>
+                                <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                                    <i class="mdi mdi-panda fa-fw fa-sm text-secondary" style="width:80px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end partnerships   -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- total earned   -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-inline-block">
+                                    <h5 class="text-muted">예약 건수</h5>
+                                    <h2 class="mb-0">[[${reserve_count}]]</h2>
+                                </div>
+                                <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                                    <i class="far fa-address-card fa-fw fa-sm text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end total earned   -->
+                    <!-- ============================================================== -->
+                </div>
+
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- hoverable table -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">축제 최신글</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">축제명</th>
+                                        <th scope="col">지역명</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="fes_dto : ${fes_dto}"
+                                        th:onclick="|location.href='@{/admin_page/festival_detail(idx=${fes_dto.idx})}'|">
+                                        <td>[[${fes_dto.name}]]</td>
+                                        <td>[[${fes_dto.zone}]]</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end hoverable table -->
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- hoverable table -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">체험 최신글</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">체험명</th>
+                                        <th scope="col">지역명</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="exp_dto : ${exp_dto}"
+                                        th:onclick="|location.href='@{/admin_page/exp_detail(idx=${exp_dto.idx})}'|">
+                                        <td>[[${exp_dto.name}]]</td>
+                                        <td>[[${exp_dto.zone}]]</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end hoverable table -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- hoverable table -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">답변대기 질문</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">질문명</th>
+                                        <th scope="col">작성날짜</th>
+                                        <th scope="col">답변여부</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="q_dto : ${q_dto}"
+                                        th:onclick="|location.href='@{/admin_page/qa_detail(idx=${q_dto.idx})}'|">
+                                        <td>[[${q_dto.title}]]</td>
+                                        <td>[[${q_dto.date}]]</td>
+                                        <td style="color: red">답변대기</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end hoverable table -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- hoverable table -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">예약 취소요청</h5>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">예약자명</th>
+                                        <th scope="col">체험명</th>
+                                        <th scope="col">예약상태</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="reserve_dto : ${reserve_dto}"
+                                        th:onclick="|location.href='@{/admin_page/reserve_modify(num=${reserve_dto.num})}'|">
+                                        <td>[[${reserve_dto.u_name}]]</td>
+                                        <td>[[${reserve_dto.e_name}]]</td>
+                                        <td style="color: red">[[${reserve_dto.state}]]</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end hoverable table -->
+                    <!-- ============================================================== -->
+                </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript: void(0);">About</a>
+                        <a href="javascript: void(0);">Support</a>
+                        <a href="javascript: void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end footer -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+<!-- Optional JavaScript -->
+<!-- jquery 3.3.1 -->
+<script th:src="@{/assets/vendor/jquery/jquery-3.3.1.min.js}"></script>
+<!-- bootstap bundle js -->
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.js}"></script>
+<!-- slimscroll js -->
+<script th:src="@{/assets/vendor/slimscroll/jquery.slimscroll.js}"></script>
+<!-- main js -->
+<script th:src="@{/assets/libs/js/main-js.js}"></script>
+<!-- chart chartist js -->
+<script th:src="@{/assets/vendor/charts/chartist-bundle/chartist.min.js}"></script>
+<!-- sparkline js -->
+<script th:src="@{/assets/vendor/charts/sparkline/jquery.sparkline.js}"></script>
+<!-- morris js -->
+<script th:src="@{/assets/vendor/charts/morris-bundle/raphael.min.js}"></script>
+<script th:src="@{/assets/vendor/charts/morris-bundle/morris.js}"></script>
+<!-- chart c3 js -->
+<script th:src="@{/assets/vendor/charts/c3charts/c3.min.js}"></script>
+<script th:src="@{/assets/vendor/charts/c3charts/d3-5.4.0.min.js}"></script>
+<script th:src="@{/assets/vendor/charts/c3charts/C3chartjs.js}"></script>
+<script th:src="@{/assets/libs/js/dashboard-ecommerce.js}"></script>
+</body>
+</th:block>
+
+</html>

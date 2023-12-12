@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org", xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>체험 리스트</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" th:href="@{/css/experience/experience.css}" />
+  <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+  <script defer th:src="@{/js/select-area.js}"></script>
+  <script defer th:src="@{/js/header.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<!--  header -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a th:href="@{/}" class="logo"
+      ><img th:src="@{/img/logo/logo.svg}" alt=""
+      /></a>
+    </div>
+    <nav class="nav">
+      <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+      <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+      <a href="/qna" class="nav-list">Q&A</a>
+      <a href="/notice" class="nav-list">공지사항</a>
+    </nav>
+    <div class="header-right">
+      <a href="/search" class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- 로그인 X -->
+      <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+      <!-- 로그인 O -->
+      <div class="user-profile" sec:authorize="isAuthenticated()">
+        <i class="fa-regular fa-circle-user"></i>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
+    <div class="my-page" >
+      <ul class="my-page-list">
+        <li><a href="/mypage/profile">정보수정</a></li>
+        <li><a href="/mypage/reservation">예약내역</a></li>
+        <li><a href="/mypage/review">리뷰내역</a></li>
+        <li><a href="/mypage/favorite">관심목록</a></li>
+        <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- main -->
+<div class="main-container">
+  <div class="main-top">
+    <div class="top-align">
+      <div class="top-title">체험</div>
+      <div class="area-con">
+        <a th:href="@{/experience(zone=전체)}" class="area">전체</a>
+        <a th:href="@{/experience(zone=서울)}" class="area">서울</a>
+        <a th:href="@{/experience(zone=부산)}" class="area">부산</a>
+        <a th:href="@{/experience(zone=대구)}" class="area">대구</a>
+        <a th:href="@{/experience(zone=인천)}" class="area">인천</a>
+        <a th:href="@{/experience(zone=광주)}" class="area">광주</a>
+        <a th:href="@{/experience(zone=대전)}" class="area">대전</a>
+        <a th:href="@{/experience(zone=울산)}" class="area">울산</a>
+        <a th:href="@{/experience(zone=세종)}" class="area">세종</a>
+        <a th:href="@{/experience(zone=경기)}" class="area">경기</a>
+        <a th:href="@{/experience(zone=강원)}" class="area">강원</a>
+        <a th:href="@{/experience(zone=충북)}" class="area">충북</a>
+        <a th:href="@{/experience(zone=충남)}" class="area">충남</a>
+        <a th:href="@{/experience(zone=전북)}" class="area">전북</a>
+        <a th:href="@{/experience(zone=전남)}" class="area">전남</a>
+        <a th:href="@{/experience(zone=경북)}" class="area">경북</a>
+        <a th:href="@{/experience(zone=경남)}" class="area">경남</a>
+        <a th:href="@{/experience(zone=제주)}" class="area">제주</a>
+      </div>
+    </div>
+  </div>
+  <div class="main-contents-con">
+    <div class="contents-align">
+      <a th:each="dto : ${dto}" th:href="@{/experience/detail(idx=${dto.idx})}" class="contents">
+        <div class="contents-img-con">
+          <div class="contents-area">
+            <p>[[${dto.zone}]]</p>
+          </div>
+          <img th:src="${dto.filepath}" alt="" />
+        </div>
+        <div class="contents-info-con">
+          <p class="info-title">[[${dto.name}]]</p>
+          <p class="info-area">[[${dto.l_name}]]</p>
+        </div>
+      </a>
+      <div th:if="${#lists.isEmpty(dto)}" class="list-none">
+        해당 지역은 축제 목록이 존재하지 않습니다.
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>비밀번호 변경</title>
+  <link rel="stylesheet" th:href="@{/css/mypage/pw-change.css}" />
+  <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+  <script defer th:src="@{/js/mypage/pw-change.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<header class="header">
+  <p class="title">비밀번호 변경</p>
+</header>
+<div class="main-container">
+  <div class="main-align">
+    <form th:method="post" id="pw-form">
+      <div class="pw-con">
+        <div class="pw-align-con">
+          <p>현재 비밀번호</p>
+          <input type="password" class="input-pw" name="pw" />
+          <div class="pw-show">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <p class="pw-warning" style="visibility:hidden">경고입니다</p>
+      </div>
+      <div class="new-pw-con">
+        <div class="new-pw-align-con">
+          <p>새 비밀번호</p>
+          <input type="password" class="input-new-pw" name="new_pw" />
+          <div class="pw-show">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <p class="new-pw-warning" style="visibility:hidden">경고입니다</p>
+      </div>
+      <div class="new-pw-check-con">
+        <div class="new-pw-check-align-con">
+          <p>새 비밀번호 확인</p>
+          <input type="password" class="input-new-pw-check" />
+          <div class="pw-show">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <p class="new-pw-check-warning" style="visibility: hidden">경고입니다</p>
+      </div>
+      <div class="btn-con">
+        <button class="btn-change" type="button">변경</button>
+        <button class="btn-close" type="button">취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

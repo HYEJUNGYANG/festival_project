@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 - 예약 내역</title>
+    <link rel="stylesheet" th:href="@{/css/mypage/mypage-reservation.css}" />
+    <script defer th:src="@{/js/mypage/mypage-reservation.js}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav-container">
+        <div class="nav-align">
+          <div class="logo-con">
+            <div class="logo-align">
+              <a href="/" class="logo"
+                ><img th:src="@{/img/logo/logo.svg}" alt=""
+              /></a>
+            </div>
+          </div>
+          <p class="mypage">마이페이지</p>
+          <ul class="list">
+            <li><a href="/mypage/profile">정보수정</a></li>
+            <li><a class="sel" href="/mypage/reservation">예약내역</a></li>
+            <li><a href="/mypage/review">리뷰내역</a></li>
+            <li><a href="/mypage/favorite">관심목록</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main-container">
+        <div class="main-align">
+          <div class="mypage-title">예약 내역</div>
+
+          <!-- 예약 내역이 존재할 때 -->
+          <div class="reservation-con">
+            <ul class="list">
+              <!-- 01 -->
+              <li th:each="dto : ${dto}" >
+
+                <div class="list-align" th:if="${!#lists.isEmpty(dto)}">
+                  <a th:href="@{/experience/detail(idx=${dto.e_idx})}" class="e-name"
+                    >[[${dto.e_name}]]</a
+                  >
+              <button th:data-num="${dto.num}" class="btn-review" th:if="${dto.state}=='체험완료' and ${dto.review}=='n'">리뷰 쓰러가기</button>
+              <a th:href="@{/experience/detail(idx=${dto.e_idx})}" class="btn-review" th:if="${dto.state}=='체험완료' and ${dto.review}=='y'">리뷰 보러가기</a>
+                  <div class="r-detail-con">
+                    <div class="r-num-con">
+                      <p class="r-num">예약번호</p>
+                      <!-- 8자리 -->
+                      <p class="r-num-c">[[${dto.num}]]</p>
+                    </div>
+                    <div class="r-state-con">
+                      <p class="r-state">예약상태</p>
+                      <p class="r-state-c">[[${dto.state}]]</p>
+                    </div>
+                    <div class="r-date-con">
+                      <p class="r-date">결제날짜</p>
+                      <p class="r-date-c">[[${#temporals.format(dto.now_date, 'yyyy-MM-dd HH:mm:ss')}]]</p>
+                    </div>
+                    <div class="r-pay-con">
+                      <p class="r-pay">금액</p>
+                      <p class="r-pay-c">[[${#numbers.formatInteger(dto.total, 3, 'COMMA')}]]원</p>
+                    </div>
+                  </div>
+                  <button class="btn-r-detail" th:data-num="${dto.num}" th:if="${dto.state}!='취소완료'" >예약 상세정보</button>
+                </div>
+              </li>
+              <!-- 예약 내역이 존재하지 않을 때 -->
+                        <div class="reservation-con none" th:if="${#lists.isEmpty(dto)}" >
+                          <p class="t-none">현재 예약 내역이 존재하지 않습니다.</p>
+                          <button class="btn-main">
+                            <a href="/">메인으로 이동</a>
+                          </button>
+                        </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--main-color);
+}
+
+.header .title {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.01rem;
+  padding: 1rem;
+}
+
+.main-container {
+  width: 100%;
+}
+
+.main-container .main-align {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main-container .main-align .pw-con,
+.main-container .main-align .new-pw-con,
+.main-container .main-align .new-pw-check-con {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container .main-align .new-pw-con {
+  margin-top: 5rem;
+}
+
+.main-container .main-align .new-pw-check-con {
+  margin-top: 2rem;
+}
+
+.main-container .main-align .pw-con .pw-align-con,
+.main-container .main-align .new-pw-con .new-pw-align-con,
+.main-container .main-align .new-pw-check-con .new-pw-check-align-con {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.main-container .main-align .pw-con .pw-align-con p,
+.main-container .main-align .new-pw-con .new-pw-align-con p,
+.main-container .main-align .new-pw-check-con .new-pw-check-align-con p {
+  width: 26%;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.main-container .main-align input {
+  width: 74%;
+  font-size: 1.3rem;
+  padding: 0.6rem 1rem;
+  padding-right: 3rem;
+  outline: none;
+  border: 1.5px solid #ddd;
+}
+
+.main-container .main-align input:focus {
+  border: 1.5px solid var(--main-color);
+}
+
+.main-container .main-align .pw-con .pw-warning,
+.main-container .main-align .new-pw-con .new-pw-warning,
+.main-container .main-align .new-pw-check-con .new-pw-check-warning {
+  margin-top: 0.7rem;
+  color: rgb(255, 99, 99);
+}
+
+.main-container .main-align .fa-eye,
+.main-container .main-align .fa-eye-slash {
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.2rem;
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.main-container .main-align .btn-con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 4.5rem;
+}
+
+.main-container .main-align .btn-con button {
+  cursor: pointer;
+  padding: 0.8rem 4.5rem;
+}
+
+.main-container .main-align .btn-con button:hover {
+  opacity: 0.7;
+}
+
+.main-container .main-align .btn-con .btn-change {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.main-container .main-align .btn-con .btn-close {
+  border: 1.5px solid #ddd;
+  color: #888;
+}
+
+.main-container .main-align .btn-con .btn-close:hover {
+  opacity: 0.9;
+  color: black;
+}

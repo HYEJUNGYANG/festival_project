@@ -1,0 +1,167 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+}
+
+.main-container .main-align {
+  position: relative;
+  width: 55%;
+  margin: 0 auto;
+  padding-top: var(--header-height);
+}
+
+.main-container .main-align .main-top-con {
+  margin-top: 3rem;
+}
+
+.main-container .main-align .main-top-con .top-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.main-container .main-align .main-top-con .top-info-con {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-end;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.main-container .main-align .main-top-con .top-info-con .notice-date {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #333;
+}
+
+.main-container .main-align .main-top-con .top-info-con .btn-all-list {
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.3rem;
+}
+
+.main-container .main-align .main-top-con .top-info-con .btn-all-list:hover {
+  opacity: 0.7;
+}
+
+.main-container .main-align .notice-content-con {
+  width: 100%;
+  margin-top: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.main-container .main-align .notice-content-con .content-img {
+  width: 100%;
+}
+
+.main-container .main-align .notice-content-con .content-img img {
+  width: 100%;
+}
+
+.main-container .main-align .notice-content-con .content {
+  width: 100%;
+}
+
+.main-container .main-align .notice-content-con .content p {
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.main-container .main-align .page-control {
+  width: 100%;
+  margin-bottom: 10rem;
+}
+
+.main-container .main-align .page-control .prev-page,
+.main-container .main-align .page-control .next-page {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 1.3rem;
+  font-size: 1.1rem;
+  border-top: 1px solid #ddd;
+}
+
+.main-container .main-align .page-control .prev-page.none-next {
+  border-bottom: 1px solid #ddd;
+}
+
+.main-container .main-align .page-control .next-page {
+  border-bottom: 1px solid #ddd;
+}
+
+.main-container .main-align .page-control .prev-page .prev,
+.main-container .main-align .page-control .next-page .next {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.main-container .main-align .page-control .prev-page .prev::after,
+.main-container .main-align .page-control .next-page .next::after {
+  content: '|';
+  margin-left: 1rem;
+  color: #cecece;
+  font-weight: 300;
+}
+
+.main-container .main-align .page-control .prev-page .prev-title,
+.main-container .main-align .page-control .next-page .next-title {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 스크롤 */
+.main-container .main-align .main-scroll-con {
+  position: fixed;
+  right: 18%;
+  bottom: 1.5rem;
+}
+
+.main-container .main-align .main-scroll-con .scroll {
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: white;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s;
+}
+
+.main-container .main-align .main-scroll-con .scroll.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.3s;
+}
+
+.main-container .main-align .main-scroll-con .scroll .fa-arrow-up {
+  font-size: 1.3rem;
+  color: #333;
+}

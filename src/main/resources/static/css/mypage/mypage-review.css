@@ -1,0 +1,313 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+}
+
+.container .nav-container {
+  width: 12%;
+  height: 100vh;
+  background-color: #dcbaffb8;
+  box-shadow: 5px 0 10px rgba(174, 174, 174, 0.25);
+  /* box-shadow: inset 0 0 10px red; */
+}
+
+.container .nav-container .nav-align {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container .nav-container .nav-align .logo-con {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.container .nav-container .nav-align .logo-con .logo-align {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container .nav-container .nav-align .logo-con .logo-align .logo {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.container .nav-container .nav-align .mypage {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 4rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #333;
+}
+
+.container .nav-container .nav-align .list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .nav-container .nav-align .list li a {
+  display: block;
+  cursor: pointer;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+  padding: 1rem;
+  border-bottom: 1.5px solid transparent;
+}
+
+.container .nav-container .nav-align .list li a.sel {
+  color: black;
+  font-weight: 600;
+}
+
+.container .nav-container .nav-align .list li a:hover {
+  padding: 0;
+  margin: 1rem;
+  border-bottom: 1.5px solid black;
+}
+
+.container .main-container {
+  width: 88%;
+}
+
+.container .main-container .main-align {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.container .main-container .main-align .mypage-title {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: 600;
+  padding: 0 1.2rem;
+  box-shadow: inset 0 -23px 0 #f2d0ffb8;
+}
+
+/* 리뷰 내역이 있을 때 */
+.container .main-container .main-align .review-con {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+}
+
+.container .main-container .main-align .review-con .review-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  overflow: scroll;
+}
+
+.container .main-container .main-align .review-con .review-list li {
+  margin-top: 2.5rem;
+  border-top: 1.5px solid #ddd;
+  border-bottom: 1.5px solid #ddd;
+}
+
+.container .main-container .main-align .review-con .review-list li .list-align {
+  position: relative;
+  width: 93%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .e-name {
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-right: 4rem;
+  margin-right: 3rem;
+  padding-bottom: 0.7rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .e-name:hover {
+  text-decoration: underline;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .btn-con {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .btn-con
+  button {
+  cursor: pointer;
+  padding: 0 0.3rem;
+  color: #999;
+  font-size: 1.05rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .btn-con
+  button:hover {
+  text-decoration: underline;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .info-con {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  /* border-top: 1.5px solid #888; */
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .info-con
+  .star-con {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .info-con
+  .star-con
+  .fa-star {
+  color: var(--star-color);
+  font-size: 1.2rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .info-con
+  .date-con {
+  /*  */
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .info-con
+  .date-con
+  .date {
+  font-size: 0.95rem;
+}
+
+.container
+  .main-container
+  .main-align
+  .review-con
+  .review-list
+  li
+  .list-align
+  .review-content {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* 리뷰 내역이 없을 때 */
+.container .main-container .main-align .review-con.none {
+  height: 85vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .main-container .main-align .review-con.none .review-none {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: -12rem;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약 완료</title>
+    <link rel="stylesheet" th:href="@{/css/reservation/reservation-result.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/reservation/reservation-result.js}"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <a href="/" class="logo-con">
+        <img th:src="@{/img/logo/logo.svg}" alt="" />
+      </a>
+      <p class="title">예약 완료</p>
+    </header>
+    <!-- main -->
+    <div class="main-container">
+      <div class="main-align">
+        <div class="re-con">
+          <p class="complete">예약 완료되었습니다.</p>
+          <div class="re-info-con">
+            <div class="re-info">
+              <div class="r-num-con">
+                <p class="r-num">예약번호</p>
+                <p class="r-num-value">[[${dto.num}]]</p>
+              </div>
+              <div class="pay-time-con">
+                <p class="pay-time">결제시간</p>
+                <p class="pay-time-value">[[${#temporals.format(dto.now_date, 'yyyy-MM-dd HH:mm:ss')}]]</p>
+              </div>
+            </div>
+            <div class="e-info-con">
+              <div class="e-img">
+                <img th:src="${exp.filepath}" alt="" />
+              </div>
+              <div class="e-info">
+                <a th:href="@{/experience/detail(idx=${exp.idx})}" class="e-name">[[${exp.name}]]</a>
+                <div class="e-date-con">
+                  <p class="e-date">체험 날짜</p>
+                  <p class="e-date-value">[[${dto.date}]]</p>
+                </div>
+              </div>
+            </div>
+            <div class="total-con">
+              <p class="total">총 합계</p>
+              <p class="total-value">[[${#numbers.formatInteger(dto.total, 3, 'COMMA')}]]원</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-con">
+          <button class="btn-mypage-re">예약내역 보기</button>
+          <button class="btn-home"><a href="/">홈으로 이동</a></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

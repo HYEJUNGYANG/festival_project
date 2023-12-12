@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/header.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script
+            src="https://kit.fontawesome.com/082a4accbb.js"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a th:href="@{/}" class="logo"
+            ><img th:src="@{/img/logo/logo.svg}" alt=""
+            /></a>
+        </div>
+        <nav class="nav">
+            <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+            <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+            <a href="/qna" class="nav-list">Q&A</a>
+            <a href="/notice" class="nav-list">공지사항</a>
+        </nav>
+        <div class="header-right">
+            <a href="/search" class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <!-- 로그인 X -->
+            <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+            <!-- 로그인 O -->
+            <div class="user-profile" sec:authorize="isAuthenticated()">
+                <i class="fa-regular fa-circle-user"></i>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="my-page" >
+            <ul class="my-page-list">
+                <li><a href="/mypage/profile">정보수정</a></li>
+                <li><a href="/mypage/reservation">예약내역</a></li>
+                <li><a href="/mypage/review">리뷰내역</a></li>
+                <li><a href="/mypage/favorite">관심목록</a></li>
+                <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="main">
+    <div class="show-slider-container">
+        <div class="show-align">
+            <div class="show-container">
+                <div class="show-contents-align">
+                    <div class="contents">
+                        <!-- 05 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>제주</p>
+                            </div>
+                            <div class="title">눈과 꽃이 함께하는<br />동백포레스트</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='1059')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 01 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>대구</p>
+                            </div>
+                            <div class="title">어두울수록 더 빛나는<br />일루미네이션</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='35')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 02 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>충남</p>
+                            </div>
+                            <div class="title">눈과 얼음이 가득한<br />청양 알프스마을</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='1057')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 03 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>제주</p>
+                            </div>
+                            <div class="title">겨울에 피는 꽃,<br />동백꽃이 가득한 숲</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='1058')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 04 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>서울</p>
+                            </div>
+                            <div class="title">꿈과 환상의 나라<br />롯데월드</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='34')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 05 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>제주</p>
+                            </div>
+                            <div class="title">눈과 꽃이 함께하는<br />동백포레스트</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='1059')}">자세히 보기</a>
+                            </button>
+                        </div>
+                        <!-- 01 -->
+                        <!-- 01 -->
+                        <div class="content-slider">
+                            <div class="area">
+                                <p>대구</p>
+                            </div>
+                            <div class="title">어두울수록 더 빛나는<br />일루미네이션</div>
+                            <button class="btn-detail">
+                                <a th:href="@{/festival/detail(idx='35')}">자세히 보기</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="show-img-align">
+                    <div class="show-img">
+                        <div class="img-slider" data-slide="5">
+                            <img th:src="@{/img/thumb/IMG_7446.jpg}" alt="bg03" />
+                        </div>
+                        <div class="img-slider" data-slide="1">
+                            <img th:src="@{/img/thumb/IMG_7441.jpg}" alt="bg01" />
+                        </div>
+                        <div class="img-slider" data-slide="2">
+                            <img th:src="@{/img/thumb/IMG_7443.jpg}" alt="bg02" />
+                        </div>
+                        <div class="img-slider" data-slide="3">
+                            <img th:src="@{/img/thumb/IMG_7448.jpg}" alt="bg03" />
+                        </div>
+                        <div class="img-slider" data-slide="4">
+                            <img th:src="@{/img/thumb/IMG_7445.jpg}" alt="bg03" />
+                        </div>
+                        <div class="img-slider" data-slide="5">
+                            <img th:src="@{/img/thumb/IMG_7446.jpg}" alt="bg03" />
+                        </div>
+                        <div class="img-slider" data-slide="1">
+                            <img th:src="@{/img/thumb/IMG_7441.jpg}" alt="bg01" />
+                        </div>
+                    </div>
+                </div>
+                <div class="show-control"></div>
+            </div>
+        </div>
+        <div class="slider-control">
+            <div class="slider-align">
+                <div class="state-align">
+                    <div class="state-bar-container">
+                        <div class="state-bar"></div>
+                    </div>
+                    <div class="control-state">
+                        <p><span class="state">01</span> / 05</p>
+                    </div>
+                </div>
+                <div class="control-align">
+                    <button class="control-left">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div class="control-btn">
+                        <i class="fa-solid fa-pause"></i>
+                    </div>
+                    <button class="control-right">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tag-container">
+        <div class="tag-align">
+            <p class="tag-name"># 겨울</p>
+            <div class="tag-contents-container">
+                <!-- 03 -->
+                <a th:href="@{/festival/detail(idx='1060')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>경기</p>
+                        </div>
+                        <img th:src="@{/img/main/6.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">산정호수 썰매축제</p>
+                        <p class="info-area">경기도 포천시</p>
+                    </div>
+                </a>
+                <!-- 04 -->
+                <a th:href="@{/festival/detail(idx='1061')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>강원</p>
+                        </div>
+                        <img th:src="@{/img/main/5.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">대관령 눈꽃축제</p>
+                        <p class="info-area">강원도 평창군</p>
+                    </div>
+                </a>
+                <!-- 01 -->
+                <a th:href="@{/festival/detail(idx='41')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>서울</p>
+                        </div>
+                        <img th:src="@{/img/main/8.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">광화문광장 마켓</p>
+                        <p class="info-area">서울특별시 종로구</p>
+                    </div>
+                </a>
+                <!-- 02 -->
+                <a th:href="@{/festival/detail(idx='19')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>부산</p>
+                        </div>
+                        <img th:src="@{/img/main/7.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">해운대 빛축제</p>
+                        <p class="info-area">부산광역시 해운대구</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="tag-align">
+            <p class="tag-name"># 가족과함께</p>
+            <div class="tag-contents-container">
+                <!-- 01 -->
+                <a th:href="@{/experience/detail(idx='17')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>충북</p>
+                        </div>
+                        <img th:src="@{/img/main/3.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">단양패러에 반하다</p>
+                        <p class="info-area">충청북도 단양군</p>
+                    </div>
+                </a>
+                <!-- 03 -->
+                <a th:href="@{/experience/detail(idx='14')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>대전</p>
+                        </div>
+                        <img th:src="@{/img/main/1.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">엑스포아쿠아리움</p>
+                        <p class="info-area">대전광역시 유성구</p>
+                    </div>
+                </a>
+                <!-- 04 -->
+                <a th:href="@{/experience/detail(idx='6')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>경남</p>
+                        </div>
+                        <img th:src="@{/img/main/4.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">김해천문대</p>
+                        <p class="info-area">경상남도 김해시</p>
+                    </div>
+                </a>
+                <!-- 02 -->
+                <a th:href="@{/experience/detail(idx='8')}" class="tag-contents">
+                    <div class="tag-img-con">
+                        <div class="tag-area">
+                            <p>제주</p>
+                        </div>
+                        <img th:src="@{/img/main/2.jpg}" alt="" />
+                    </div>
+                    <div class="tag-info-con">
+                        <p class="info-title">제주양떼목장</p>
+                        <p class="info-area">제주시 애월읍</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

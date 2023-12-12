@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="content">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" th:href="@{/../assets/vendor/bootstrap/css/bootstrap.min.css}">
+        <link th:href="@{/../assets/vendor/fonts/circular-std/style.css}" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/../assets/libs/css/style.css}">
+        <link rel="stylesheet" th:href="@{/../assets/vendor/fonts/fontawesome/css/fontawesome-all.css}">
+        <link rel="stylesheet" th:href="@{/../assets/vendor/datepicker/tempusdominus-bootstrap-4.css}" />
+        <link rel="stylesheet" th:href="@{/../assets/vendor/inputmask/css/inputmask.css}" />
+        <link rel="stylesheet" th:href="@{/../documentation/css/fes_exp_style.css}" />
+    </head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a th:href="@{/admin_page/admin_main}"><img th:src="@{/assets/images/logo.png}" style="width:30%; padding:2%"/></a>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item">
+                                <!--<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>TTTTTTTTTT</a>
+                                <div id="submenu-5" class="collapse submenu" style="">-->
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/user_list}"> <i class="fa fa-fw fa-user-circle"></i>유저리스트</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/festival_list}"><i class="fas fa-lightbulb"></i>축제리스트</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/exp_list}"><i class="fa fa-fw fa-rocket"></i>체험리스트</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/reserve_list}"><i class="fab fa-fw fa-wpforms"></i>예약리스트</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/notice_list}"><i class="fas fa-fw fa-file"></i>공지사항</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/qa_list}"><i class="fas fa-comment"></i>Q & A</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" th:href="@{/admin_page/review_list}"><i class="fas fa-edit"></i>체험리뷰</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>로그아웃</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-out-alt"></i>로그인</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-header" id="top">
+                                    <h2 class="pageheader-title">예약 상세정보란</h2>
+                                    <div class="page-breadcrumb">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">예약리스트</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">예약 상세정보란</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end pageheader  -->
+                        <!-- ============================================================== -->
+
+                        <!-- ============================================================== -->
+                        <!-- basic form  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Basic Form</h5>
+                                    <div class="card-body">
+                                        <form th:action="@{/admin_page/reserve_modify}" th:method="post">
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">예약번호</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="num" th:value="${dto.num}"  class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">이름</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="u_name" th:value="${dto.u_name}"  class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">전화번호</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="u_tel" th:value="${dto.u_tel}" class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">체험명</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="e_name" th:value="${dto.e_name}" class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">체험날짜</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="date" th:value="${dto.date}" class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">예약날짜</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="datetime-local" name="now_date" th:value="${#temporals.format(dto.now_date, 'yyyy-MM-dd HH:mm:ss')}" class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">예약상태</label>
+
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <select class="form-control" name="state" th:value="${dto.state}" >
+                                                        <option th:selected="${dto.state}=='예약확정'">예약확정</option>
+                                                        <option th:selected="${dto.state}=='취소요청'">취소요청</option>
+                                                        <option th:selected="${dto.state}=='취소완료'">취소완료</option>
+                                                        <option th:selected="${dto.state}=='체험완료'">체험완료</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">결제수단</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="pay" th:value="${dto.pay}" class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">결제금액</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="total" th:value="${dto.total}"  class="form-control" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-form-label text-sm-right">인원수</label>
+                                                <div class="col-12 col-sm-8 col-lg-6">
+                                                    <input required="" type="text" name="count" th:value="${dto.count}"  class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row text-right">
+                                                <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                                    <button type="submit" class="btn btn-space btn-primary">수정완료</button>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end basic form  -->
+                        <!-- ============================================================== -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
+    <script src="../assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
+    <script>
+    $(function(e) {
+        "use strict";
+        $(".date-inputmask").inputmask("dd/mm/yyyy"),
+            $(".phone-inputmask").inputmask("(999) 999-9999"),
+            $(".international-inputmask").inputmask("+9(999)999-9999"),
+            $(".xphone-inputmask").inputmask("(999) 999-9999 / x999999"),
+            $(".purchase-inputmask").inputmask("aaaa 9999-****"),
+            $(".cc-inputmask").inputmask("9999 9999 9999 9999"),
+            $(".ssn-inputmask").inputmask("999-99-9999"),
+            $(".isbn-inputmask").inputmask("999-99-999-9999-9"),
+            $(".currency-inputmask").inputmask("$9999"),
+            $(".percentage-inputmask").inputmask("99%"),
+            $(".decimal-inputmask").inputmask({
+                alias: "decimal",
+                radixPoint: "."
+            }),
+
+            $(".email-inputmask").inputmask({
+                mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[*{2,6}][*{1,2}].*{1,}[.*{2,6}][.*{1,2}]",
+                greedy: !1,
+                onBeforePaste: function(n, a) {
+                    return (e = e.toLowerCase()).replace("mailto:", "")
+                },
+                definitions: {
+                    "*": {
+                        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~/-]",
+                        cardinality: 1,
+                        casing: "lower"
+                    }
+                }
+            })
+    });
+    </script>
+</body>
+</th:block>
+</html>

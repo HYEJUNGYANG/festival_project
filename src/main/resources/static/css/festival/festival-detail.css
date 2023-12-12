@@ -1,0 +1,260 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a {
+  all: unset;
+}
+
+/* main */
+.main-container {
+  width: 100%;
+  padding-top: var(--header-height);
+}
+
+.main-container .main-align {
+  width: 50%;
+  margin: 0 auto;
+  /* margin-bottom 나중에 꼭 수정하거나 없애기 */
+  margin-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: inset 0 0 10px red; */
+}
+
+.main-container .main-align .title-con {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.main-container .main-align .title-con .title {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  padding: 0 1.5rem;
+  box-shadow: inset 0 -18px 0 rgb(255 223 223);
+}
+
+.main-container .main-align .area-con {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container .main-align .area-con .area {
+  margin: 1.5rem 0 2.5rem 0;
+  font-size: 1.15rem;
+  color: #555;
+  font-weight: 400;
+}
+
+.main-container .main-align .like-re {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  /* box-shadow: inset 0 0 10px blue; */
+}
+
+.main-container .main-align .like-re .like {
+  cursor: pointer;
+}
+
+.main-container .main-align .like-re .like .heart-none {
+  font-size: 1.6rem;
+  color: #444;
+  padding-left: 1.5rem;
+}
+
+.main-container .main-align .like-re .like .heart-full {
+  font-size: 1.6rem;
+  color: rgb(255, 100, 100);
+  padding-left: 1.5rem;
+}
+
+.main-container .main-align .like-re .reservation .btn-re {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 0.3rem;
+}
+
+.main-container .main-align .like-re .reservation .btn-re:hover {
+  opacity: 0.7;
+}
+
+.main-container .main-align .info-con {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+/* 이미지 */
+.main-container .main-align .info-con .info-img-con {
+  width: 100%;
+}
+
+.main-container .main-align .info-con .info-img-con img {
+  width: 100%;
+}
+
+.main-container .main-align .info-con .detail-con {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.main-container .main-align .info-con .detail-con .detail-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-bottom: 0.8rem;
+  border-bottom: 2.5px solid black;
+}
+
+.main-container .main-align .info-con .detail-con .detail-content {
+  margin-top: 2.5rem;
+  font-size: 1.15rem;
+  line-height: 1.8rem;
+}
+
+/* 지도 */
+
+.main-container .main-align .info-con .map-con {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.main-container .main-align .info-con .map-con .map-container {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.main-container .main-align .info-con .map-con .map-container #map {
+  width: 100%;
+  height: 300px;
+}
+
+/* 리스트 정보 */
+
+.main-container .main-align .info-con .info-list-con {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.main-container .main-align .info-con .info-list-con .info-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-container .main-align .info-con .info-list-con .info-list li {
+  margin: 0.5rem 0;
+  font-size: 1.05rem;
+  display: flex;
+}
+
+.main-container
+  .main-align
+  .info-con
+  .info-list-con
+  .info-list
+  li:nth-child(2n) {
+  width: 40%;
+}
+
+.main-container
+  .main-align
+  .info-con
+  .info-list-con
+  .info-list
+  li:nth-child(2n-1) {
+  width: 60%;
+}
+
+.main-container .main-align .info-con .info-list-con .info-list li::before {
+  position: relative;
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: black;
+  top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.main-container .main-align .info-con .info-list-con .info-list li p {
+  width: 25%;
+  font-weight: 500;
+}
+
+.main-container .main-align .info-con .info-list-con .info-list li span {
+  width: 75%;
+  font-weight: 300;
+}
+
+/* 태그 */
+.main-container .main-align .info-con .tag-con {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.main-container .main-align .info-con .tag-con .tag {
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.main-container .main-align .info-con .tag-con .tag:hover {
+  border: 1px solid #333;
+  font-size: 1.11rem;
+}
+
+/* 스크롤 */
+.main-container .main-scroll-con {
+  position: fixed;
+  right: 20%;
+  bottom: 1.5rem;
+}
+
+.main-container .main-scroll-con .scroll {
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s;
+}
+
+.main-container .main-scroll-con .scroll.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.3s;
+}
+
+.main-container .main-scroll-con .scroll .fa-arrow-up {
+  font-size: 1.3rem;
+  color: #333;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공지사항</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" th:href="@{/css/notice/notice.css}" />
+  <script defer th:src="@{/js/header.js}"></script>
+  <script defer th:src="@{/js/notice/notice.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a th:href="@{/}" class="logo"
+      ><img th:src="@{/img/logo/logo.svg}" alt=""
+      /></a>
+    </div>
+    <nav class="nav">
+      <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+      <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+      <a href="/qna" class="nav-list">Q&A</a>
+      <a href="/notice" class="nav-list">공지사항</a>
+    </nav>
+    <div class="header-right">
+      <a href="/search" class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- 로그인 X -->
+      <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+      <!-- 로그인 O -->
+      <div class="user-profile" sec:authorize="isAuthenticated()">
+        <i class="fa-regular fa-circle-user"></i>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
+    <div class="my-page" >
+      <ul class="my-page-list">
+        <li><a href="/mypage/profile">정보수정</a></li>
+        <li><a href="/mypage/reservation">예약내역</a></li>
+        <li><a href="/mypage/review">리뷰내역</a></li>
+        <li><a href="/mypage/favorite">관심목록</a></li>
+        <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- main -->
+<div class="main-container">
+  <div class="main-align">
+    <div class="main-top-con">
+      <p class="top">공지사항</p>
+      <p class="count">총 <span>[[${count}]]</span> 건</p>
+    </div>
+    <div class="notice-list">
+      <ul class="list">
+        <li th:each="dto, state: ${result.dtoList}"
+            th:onclick="|location.href='@{/notice/detail(idx = ${dto.idx})}'|" >
+
+          <p class="notice-title">
+            [[${dto.title}]]
+          </p>
+          <p class="notice-date">[[${dto.date}]]</p>
+
+        </li>
+      </ul>
+    </div>
+    <div class="page-con">
+      <div class="page-align">
+        <a th:href="@{/notice(page= ${result.start -1})}" class="prev-btn-con" th:if="${result.prev}">
+          <i class="fa-solid fa-chevron-left"></i>
+          이전
+        </a>
+        <a th:href="@{/notice(page = ${page})}" th:class=" 'page ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+          [[${page}]]
+        </a>
+        <a th:href="@{/notice(page= ${result.end + 1})}" class="next-btn-con" th:if="${result.next}">
+          다음
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

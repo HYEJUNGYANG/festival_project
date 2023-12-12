@@ -1,0 +1,141 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a {
+  all: unset;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--main-color);
+}
+
+.header p {
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container .align-con {
+  width: 90%;
+  margin: 0 auto;
+  /* box-shadow: inset 0 0 10px red; */
+}
+
+.main-container .align-con .e-name {
+  margin-top: 3rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.main-container .align-con .info-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 1.5rem;
+}
+
+.main-container .align-con .info-con .star-con {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.main-container .align-con .info-con .star-con .star {
+  cursor: pointer;
+}
+
+.main-container .align-con .info-con .star-con .star .fa-star {
+  color: var(--star-color);
+  font-size: 1.8rem;
+}
+
+.main-container .align-con .info-con .date-con {
+  font-size: 1.15rem;
+  color: #333;
+}
+
+.main-container .align-con .input-con {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.main-container .align-con .input-con .input-txt {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  outline: none;
+  font-size: 1.1rem;
+  border: 1px solid #eee;
+  padding: 1rem;
+}
+
+.main-container .align-con .char-num {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.main-container .align-con .char-num p {
+  font-weight: bold;
+  color: #777;
+}
+
+.main-container .align-con .char-num p span {
+  color: #333;
+}
+
+.main-container .align-con .btn-con {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.main-container .align-con .btn-con button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0.7rem 3.5rem;
+  border-radius: 0.3rem;
+}
+
+.main-container .align-con .btn-con .btn-submit {
+  border: 1.5px solid var(--main-color);
+  color: var(--main-color);
+}
+
+.main-container .align-con .btn-con .btn-submit:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.main-container .align-con .btn-con .btn-close {
+  border: 1.5px solid #ddd;
+  color: #333;
+}
+
+.main-container .align-con .btn-con .btn-close:hover {
+  font-weight: bold;
+}

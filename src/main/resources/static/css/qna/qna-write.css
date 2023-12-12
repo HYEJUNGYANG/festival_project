@@ -1,0 +1,126 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+  padding-top: var(--header-height);
+}
+
+.main-container .main-align {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.main-container .main-align .main-top-con p {
+  width: fit-content;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0 1rem;
+  box-shadow: inset 0 -18px 0 rgb(255 223 223);
+}
+
+.main-container .main-align .title-con {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.main-container .main-align .title-con .title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.main-container .main-align .title-con .input-title {
+  font-size: 1.1rem;
+  padding: 0.7rem 1.2rem;
+  border: 1.5px solid #ddd;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+.main-container .main-align .title-con .input-title:focus,
+.main-container .main-align .content-con .txt-content:focus {
+  border: 1.5px solid var(--main-color);
+}
+
+.main-container .main-align .content-con {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+.main-container .main-align .content-con .content {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.main-container .main-align .content-con .ck-reset {
+  margin-top: 0.5rem;
+}
+
+.main-container .main-align .content-con .ck-content {
+  height: 400px;
+  font-size: 1.1rem;
+  border: 1.5px solid #ddd;
+  outline: none;
+}
+
+.main-container .main-align .content-con .ck-content:focus {
+  border: 1.5px solid var(--main-color);
+  outline: none;
+}
+
+.main-container .main-align .content-con .txt-content {
+  resize: none;
+  width: 100%;
+  height: 400px;
+  font-size: 1.1rem;
+  padding: 1rem 1.2rem;
+  border: 1.5px solid #ddd;
+  margin-top: 0.5rem;
+  outline: none;
+}
+
+.main-container .main-align .check-con {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.main-container .main-align .btn-submit {
+  display: block;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding: 1rem 6rem;
+  border-radius: 0.3rem;
+  color: white;
+  background-color: var(--main-color);
+}
+
+.main-container .main-align .btn-submit:hover {
+  opacity: 0.7;
+}

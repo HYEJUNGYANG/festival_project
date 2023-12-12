@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/login.js}"></script>
+    <script
+      src="https://kit.fontawesome.com/082a4accbb.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-con">
+        <div class="logo-align">
+          <a href="/"><img th:src="@{/img/logo/logo.svg}" alt="" /></a>
+        </div>
+      </div>
+      <div class="login-con">
+        <form id="form" th:action="@{/loginProcess}" method="post">
+          <div class="login-input-id">
+            <i class="fa-regular fa-user"></i>
+            <input class="input-id" type="text" name="id" placeholder="이메일" />
+          </div>
+          <div class="login-input-pw">
+            <i class="fa-solid fa-lock"></i>
+            <input class="input-pw" type="password" name="pw" placeholder="비밀번호" />
+            <div class="pw-show">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+          <div class="con-join">
+            <p>아직 회원이 아니신가요?</p>
+            <a href="/join">회원가입</a>
+          </div>
+          <p th:if="${param.error}" class="warning error">
+            아이디 또는 비밀번호가 일치하지 않습니다.
+          </p>
+          <p class="blank warning"></p>
+          <button class="btn-login" type="button">로그인</button>
+        </form>
+      </div>
+    </div>
+  <script th:inline="javascript">
+    addEventListener('load', () => {
+      const msg = [[${msg}]];
+      if (msg) {
+        alert(msg);
+      }
+    })
+  </script>
+  </body>
+</html>

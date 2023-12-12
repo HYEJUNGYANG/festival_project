@@ -1,0 +1,160 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: var(--main-color);
+}
+
+.header p {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.01rem;
+  padding: 1rem;
+  color: white;
+}
+
+.main-container {
+  width: 100%;
+}
+
+.main-container .main-align {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main-container .main-align .r-num-con {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.main-container .main-align .r-num-con .r-num {
+  font-weight: 600;
+}
+
+.main-container .main-align .e-info-con {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  border: 1.5px solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.main-container .main-align .e-info-con .e-img {
+  width: 40%;
+  padding: 1.5rem;
+}
+
+.main-container .main-align .e-info-con .e-img img {
+  width: 100%;
+}
+
+.main-container .main-align .e-info-con .info-con {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  padding-left: 0;
+}
+
+.main-container .main-align .e-info-con .info-con .e-name {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-container .main-align .e-info-con .info-con .e-date-con {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 200;
+}
+
+.main-container .main-align .e-info-con .info-con .e-date-con .e-date {
+  font-weight: 500;
+}
+
+.main-container .main-align .r-detail-info-con {
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-container .main-align .r-detail-info-con div {
+  width: 48%;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.main-container .main-align .r-detail-info-con div p:first-child {
+  font-weight: 500;
+  width: 25%;
+}
+
+.main-container .main-align .r-detail-info-con div p:last-child {
+  font-weight: 200;
+}
+
+.main-container .main-align .btn-con {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.main-container .main-align .btn-con button {
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+}
+
+.main-container .main-align .btn-con button:hover {
+  opacity: 0.7;
+}
+
+.main-container .main-align .btn-con .btn-cancel {
+  color: white;
+  background-color: var(--main-color);
+}
+
+.main-container .main-align .btn-con .btn-close {
+  border: 1.5px solid #ddd;
+  color: #888;
+}
+
+.main-container .main-align .btn-con .btn-close:hover {
+  opacity: 0.8;
+  color: #333;
+}

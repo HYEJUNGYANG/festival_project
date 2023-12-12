@@ -1,0 +1,470 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+  --header-height: 80px;
+  --hover-bg-gray: #f2f2f2;
+  --main-color: #c082ff;
+  --star-color: rgb(255, 221, 27);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+a {
+  all: unset;
+}
+
+body {
+  /* background-color: #eee; */
+}
+
+.main-container {
+  width: 100%;
+}
+
+.main-container .search-container {
+  width: 100%;
+  padding-top: calc(var(--header-height) + 4rem);
+  padding-bottom: 7rem;
+  background-color: white;
+}
+
+.main-container .search-container .search-align {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.main-container .search-container .search-align .search {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main-container .search-container .search-align .search .fa-magnifying-glass {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 1.2rem;
+  left: 1.4rem;
+}
+
+.main-container .search-container .search-align .search .input-search {
+  width: 100%;
+  outline: none;
+  border: 1.5px solid #ddd;
+  font-size: 1.2rem;
+  padding: 1rem 1.2rem;
+  padding-left: 3.6rem;
+}
+
+.main-container .search-container .search-align .search .input-search:focus,
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .place-con
+  .input-place:focus {
+  border: 1.5px solid var(--main-color);
+}
+
+.main-container .search-container .search-align .place-date {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-container .search-container .search-align .place-date .place-con {
+  position: relative;
+  width: 49%;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .place-con
+  .fa-location-dot {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 1.2rem;
+  left: 1.4rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .place-con
+  .input-place {
+  width: 100%;
+  outline: none;
+  border: 1.5px solid #ddd;
+  font-size: 1.2rem;
+  padding: 1rem 1.2rem;
+  padding-left: 3.6rem;
+}
+
+.main-container .search-container .search-align .place-date .date-con {
+  position: relative;
+  width: 49%;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .date-con
+  .fa-calendar-days {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.4rem;
+  font-size: 1.2rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .date-con
+  .input-date {
+  width: 100%;
+  position: absolute;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.2rem;
+  padding-left: 3.6rem;
+  opacity: 0;
+  z-index: 1;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .date-con
+  .input-date:focus
+  + .date-label {
+  border: 1.5px solid var(--main-color);
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .date-con
+  .input-date::-webkit-calendar-picker-indicator {
+  width: 100%;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-date
+  .date-con
+  .date-label {
+  width: 100%;
+  position: absolute;
+  color: #777;
+  border: 1.5px solid #ddd;
+  font-size: 1.2rem;
+  padding: 1rem 1.2rem;
+  padding-left: 3.6rem;
+  /* box-shadow: inset 0 0 10px red; */
+}
+
+.main-container .search-container .search-align .place-select-con {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 39%;
+  z-index: 11;
+  top: 60%;
+  left: 10%;
+  border: 1.5px solid black;
+  border-radius: 0.4rem;
+}
+
+.main-container .search-container .search-align .place-select-con.show {
+  display: block;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-close-con {
+  cursor: pointer;
+  position: absolute;
+  top: 5%;
+  right: 0;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-close-con
+  .fa-xmark {
+  font-size: 1.5rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .title {
+  padding-top: 5%;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .notice {
+  font-size: 0.95rem;
+  color: #888;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-all {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1.5rem;
+  text-align: center;
+  background-color: #eee;
+  padding: 0.8rem;
+  border-radius: 1.2rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-all:hover {
+  opacity: 0.8;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-area-con {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-area-con
+  .area-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-area-con
+  .area-list
+  li {
+  cursor: pointer;
+  width: 22%;
+  text-align: center;
+  font-weight: 400;
+  border: 1.5px solid #eee;
+  color: #686868;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-area-con
+  .area-list
+  li.area-click {
+  border: 1.5px solid var(--main-color);
+  color: var(--main-color);
+  box-shadow: 0 2px 10px rgba(152, 152, 152, 0.25);
+}
+
+.main-container
+  .search-container
+  .search-align
+  .place-select-con
+  .select-align
+  .btn-check {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  align-self: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  padding: 0.7rem 2.5rem;
+  color: white;
+  background-color: var(--main-color);
+}
+
+.main-container .search-container .search-align .search-btn-con {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container .search-container .search-align .btn-search {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  z-index: 10;
+  background-color: var(--main-color);
+  color: white;
+  padding: 1.2rem 6rem;
+  border-radius: 0.3rem;
+}
+
+.main-container .search-container .search-align .btn-search:hover {
+  opacity: 0.7;
+}
+
+.main-container .result-container {
+  /* display: none; */
+  width: 100%;
+  /* height: 100vh; */
+  padding-bottom: 6rem;
+}
+
+.main-container .result-container .result-count {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.main-container .result-container .result-count span {
+  font-weight: 600;
+  color: #333;
+}
+
+.main-container .result-container .result-align {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.main-container .result-container .result-align .contents {
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  width: 21%;
+  margin-top: 2rem;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  transition: transform transform 0.2s;
+}
+
+.main-container .result-container .result-align .contents:hover {
+  transform: translateY(-5%);
+  /* background-color: #f2f2f2; */
+  transition: 0.5s;
+}
+
+.main-container .result-container .result-align .contents .contents-area {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+}
+
+.main-container .result-container .result-align .contents .contents-img-con {
+  width: 100%;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.main-container
+  .result-container
+  .result-align
+  .contents
+  .contents-img-con
+  img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.main-container .result-container .result-align .contents .contents-info-con {
+  width: 100%;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container
+  .result-container
+  .result-align
+  .contents
+  .contents-info-con
+  .info-title {
+  font-weight: bolder;
+  font-size: 1.1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.main-container
+  .result-container
+  .result-align
+  .contents
+  .contents-info-con
+  .info-area {
+  color: #555;
+}

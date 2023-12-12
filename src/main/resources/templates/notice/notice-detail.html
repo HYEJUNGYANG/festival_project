@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 나중에 공지사항 제목으로 title명 변경하기 -->
+  <title>공지사항 내용</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" th:href="@{/css/notice/notice-detail.css}" />
+  <script defer th:src="@{/js/header.js}"></script>
+  <script defer th:src="@{/js/notice/notice-detail.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a th:href="@{/}" class="logo"
+      ><img th:src="@{/img/logo/logo.svg}" alt=""
+      /></a>
+    </div>
+    <nav class="nav">
+      <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+      <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+      <a href="/qna" class="nav-list">Q&A</a>
+      <a href="/notice" class="nav-list">공지사항</a>
+    </nav>
+    <div class="header-right">
+      <a href="/search" class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- 로그인 X -->
+      <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+      <!-- 로그인 O -->
+      <div class="user-profile" sec:authorize="isAuthenticated()">
+        <i class="fa-regular fa-circle-user"></i>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
+    <div class="my-page" >
+      <ul class="my-page-list">
+        <li><a href="/mypage/profile">정보수정</a></li>
+        <li><a href="/mypage/reservation">예약내역</a></li>
+        <li><a href="/mypage/review">리뷰내역</a></li>
+        <li><a href="/mypage/favorite">관심목록</a></li>
+        <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- main -->
+<div class="main-container">
+  <div class="main-align">
+    <div class="main-top-con">
+      <p class="top-title">
+        [[${dto.title}]]
+      </p>
+      <div class="top-info-con">
+        <p class="notice-date">[[${dto.date}]]</p>
+        <a href="/notice" class="btn-all-list">
+          전체 목록
+        </a>
+      </div>
+    </div>
+    <div class="notice-content-con">
+      <div class="content-img">
+        <img th:src="${dto.filepath}" class="col-12 col-sm-8 col-lg-6">
+      </div>
+      <div class="content">
+      </div>
+    </div>
+    <div class="page-control">
+      <div th:if="${next[0] != 0}" class="prev-page" th:classappend="${prev[0] == 0 ? 'none-next' : ''}">
+        <p class="prev">이전글</p>
+        <a th:href="@{@{/notice/detail(idx=${next[0]})}}" class="prev-title"
+        >[[${next[1]}]]</a>
+      </div>
+      <div th:if="${prev[0] != 0}" class="next-page">
+        <p class="next">다음글</p>
+        <a th:href="@{/notice/detail(idx=${prev[0]})}" class="next-title"
+        >[[${prev[1]}]]</a
+        >
+      </div>
+    </div>
+    <div class="main-scroll-con">
+      <div class="scroll">
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:inline="javascript">
+  const content = document.querySelector('.content');
+  content.innerHTML = [[${dto.content}]];
+</script>
+</body>
+</html>

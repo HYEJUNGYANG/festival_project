@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:if="${requestURI == '/qna/write'}">Q&A 작성</title>
+    <title th:if="${requestURI == '/qna/modify'}">Q&A 수정</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/qna/qna-write.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/header.js}"></script>
+    <script defer th:src="@{/js/qna/qna-write.js}"></script>
+    <script
+      src="https://kit.fontawesome.com/082a4accbb.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-container">
+          <a th:href="@{/}" class="logo"
+          ><img th:src="@{/img/logo/logo.svg}" alt=""
+          /></a>
+        </div>
+        <nav class="nav">
+          <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+          <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+          <a href="/qna" class="nav-list">Q&A</a>
+          <a href="/notice" class="nav-list">공지사항</a>
+        </nav>
+        <div class="header-right">
+          <a href="/search" class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+          <!-- 로그인 X -->
+          <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+          <!-- 로그인 O -->
+          <div class="user-profile" sec:authorize="isAuthenticated()">
+            <i class="fa-regular fa-circle-user"></i>
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+        </div>
+        <div class="my-page" >
+          <ul class="my-page-list">
+            <li><a href="/mypage/profile">정보수정</a></li>
+            <li><a href="/mypage/reservation">예약내역</a></li>
+            <li><a href="/mypage/review">리뷰내역</a></li>
+            <li><a href="/mypage/favorite">관심목록</a></li>
+            <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- main -->
+    <div class="main-container">
+      <form id="form" th:method="post" class="main-align">
+        <div class="main-top-con">
+          <p th:if="${requestURI == '/qna/write'}">Q&A 질문 등록</p>
+          <p th:if="${requestURI == '/qna/modify'}">Q&A 질문 수정</p>
+        </div>
+        <div class="title-con">
+          <p class="title">제목</p>
+          <input name="title" type="text" class="input-title"/>
+        </div>
+        <div class="content-con">
+          <p class="content">내용</p>
+          <div id="editor"></div>
+        </div>
+        <div class="check-con">
+          <label for="priv">
+            <input type="checkbox" name="priv" id="priv" value="y" />
+            비밀글
+          </label>
+        </div>
+        <button th:if="${requestURI == '/qna/write'}" type="button" class="btn-submit">등록</button>
+        <button th:if="${requestURI == '/qna/modify'}" type="button" class="btn-submit">수정</button>
+      </form>
+    </div>
+  </body>
+<script th:inline="javascript">
+  const title = document.querySelector('.input-title');
+  const priv = document.querySelector('#priv');
+  const content = document.querySelector('#editor');
+  [# th:if="${dto != null}"]
+    title.value = [[${dto.title}]];
+    content.innerHTML = [[${dto.q_content}]];
+    const privChar = [[${dto.priv}]];
+    privChar == "y" ? priv.checked = true : priv.checked = false;
+  [/]
+</script>
+</html>

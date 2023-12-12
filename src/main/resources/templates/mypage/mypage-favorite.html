@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지 - 관심 목록</title>
+  <link rel="stylesheet" th:href="@{/css/mypage/mypage-favorite.css}" />
+  <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<div class="container">
+  <nav class="nav-container">
+    <div class="nav-align">
+      <div class="logo-con">
+        <div class="logo-align">
+          <a href="/" class="logo"
+          ><img th:src="@{/img/logo/logo.svg}" alt=""
+          /></a>
+        </div>
+      </div>
+      <p class="mypage">마이페이지</p>
+      <ul class="list">
+        <li><a href="/mypage/profile">정보수정</a></li>
+        <li><a href="/mypage/reservation">예약내역</a></li>
+        <li><a href="/mypage/review">리뷰내역</a></li>
+        <li><a class="sel" href="/mypage/favorite">관심목록</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="main-container">
+    <div class="main-align">
+      <div class="mypage-title">관심 목록</div>
+      <div th:if="${fDTO.size() == 0 && eDTO.size() == 0}" class="mypage-align none">
+        <p class="favorite-none">관심 목록이 존재하지 않습니다.</p>
+      </div>
+      <div class="contents-align">
+        <div th:each="f: ${fDTO}" class="contents" th:data-id="${f.idx}" th:data-type="f">
+          <a th:href="@{/festival/detail(idx=${f.idx})}" class="contents-img-con">
+            <div class="contents-area">
+              <p>[[${f.zone}]]</p>
+            </div>
+            <img th:src="${f.filepath}" alt="" />
+          </a>
+          <div class="contents-info-con">
+            <p class="info-title">[[${f.name}]]</p>
+            <div class="heart"><i class="fa-solid fa-heart"></i></div>
+          </div>
+        </div>
+        <!-- 02 -->
+        <div th:each="e: ${eDTO}" class="contents" th:data-id="${e.idx}" th:data-type="e">
+          <a th:href="@{/experience/detail(idx=${e.idx})}" class="contents-img-con">
+            <div class="contents-area">
+              <p>[[${e.zone}]]</p>
+            </div>
+            <img th:src="${e.filepath}" alt="" />
+          </a>
+          <div class="contents-info-con">
+            <p class="info-title">[[${e.name}]]</p>
+            <div class="heart"><i class="fa-solid fa-heart"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  document.querySelectorAll('.heart').forEach(function(heart) {
+    heart.addEventListener('click', function() {
+      var itemId = this.parentElement.parentElement.getAttribute('data-id');
+      var type = this.parentElement.parentElement.getAttribute('data-type');
+
+      console.log(`'type=' + ${type} + '&itemId=' + ${itemId}`);
+
+      fetch('/mypage/favorite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'type=' + type + '&itemId=' + itemId,
+      })
+              .then(function(response) {
+                if (response.ok) {
+                  // 아이템 제거가 성공적으로 이루어졌을 때의 처리
+                  alert('아이템이 찜 목록에서 제거되었습니다.');
+                  location.reload();
+                } else {
+                  // 아이템 제거 요청이 실패했을 때의 처리
+                  alert('아이템 제거에 실패했습니다.');
+                }
+              })
+              .catch(function(error) {
+                console.error('Error:', error);
+              });
+    });
+  });
+</script>
+</html>

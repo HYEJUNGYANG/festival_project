@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.form-group.row label {position: relative; left: unset; right: unset; top: unset; bottom: unset; width: 100%;}
+.form-group.row .custom-file-label:focus,
+.form-group.row .custom-file-label:active {
+    color: #71748d;
+    background-color: #fff;
+    border-color: #a7a7f0;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(214, 214, 255, .75);
+}
+
+@media (max-width: 991px) {
+    .form-group.row {flex-direction: column;}
+    .form-group.row .col-sm-8 {width: 100%; max-width: 100%;}
+    .form-group.row label {text-align: left !important;}
+    
+}
+
+
+

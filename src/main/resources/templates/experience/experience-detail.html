@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 나중에 축제 명에 따라서 이름 달라지도록 설계하기 -->
+    <title>[[${dto.name}]]</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/experience/experience-detail.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/header.js}"></script>
+    <script
+            src="https://kit.fontawesome.com/082a4accbb.js"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=36781558f40d719c16d071300562b0d9"
+    ></script>
+    <script defer th:src="@{/js/experience/experience-detail.js}"></script>
+    <script defer th:src="@{/js/kakao-map.js}"></script>
+</head>
+<body>
+<!--  header -->
+<header class="header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a th:href="@{/}" class="logo"
+            ><img th:src="@{/img/logo/logo.svg}" alt=""
+            /></a>
+        </div>
+        <nav class="nav">
+            <a th:href="@{/festival(zone=전체)}" class="nav-list">축제</a>
+            <a th:href="@{/experience(zone=전체)}" class="nav-list">체험</a>
+            <a href="/qna" class="nav-list">Q&A</a>
+            <a href="/notice" class="nav-list">공지사항</a>
+        </nav>
+        <div class="header-right">
+            <a href="/search" class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <!-- 로그인 X -->
+            <a sec:authorize="isAnonymous()" href="/login" class="btn-login">로그인</a>
+            <!-- 로그인 O -->
+            <div class="user-profile" sec:authorize="isAuthenticated()">
+                <i class="fa-regular fa-circle-user"></i>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="my-page" >
+            <ul class="my-page-list">
+                <li><a href="/mypage/profile">정보수정</a></li>
+                <li><a href="/mypage/reservation">예약내역</a></li>
+                <li><a href="/mypage/review">리뷰내역</a></li>
+                <li><a href="/mypage/favorite">관심목록</a></li>
+                <li class="btn-logout"><a th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- main -->
+<div class="main-container">
+    <div class="main-align">
+        <div class="title-con">
+            <p class="title">[[${dto.name}]]</p>
+        </div>
+        <div class="area-con">
+            <p class="area">[[${dto.l_name}]]</p>
+        </div>
+        <div class="like-re">
+            <!-- 로그인 X -->
+            <div sec:authorize="isAnonymous()" class="like" th:data-item-id="${dto.idx}">
+            </div>
+            <!-- 로그인 O -->
+            <div sec:authorize="isAuthenticated()" class="like" id="like-button" th:data-item-id="${dto.idx}">
+                <!-- 채워진 하트 -->
+                <i th:if="${eList != null} and ${#strings.contains(eList, idx)}" class="fa-solid fa-heart heart-full"></i>
+                <!-- 빈 하트 -->
+                <i th:unless="${eList != null} and ${#strings.contains(eList, idx)}" class="fa-regular fa-heart heart-none"></i>
+            </div>
+            <div class="reservation">
+                <button th:data-count="${dto.count}" sec:authorize="isAuthenticated()" class="btn-re">예약하기</button>
+            </div>
+        </div>
+        <div class="info-con">
+            <div class="info-img-con">
+                <!-- 이미지는 하나만! -->
+                <img th:src="${dto.filepath}" alt="img" />
+            </div>
+            <div class="detail-con">
+                <p class="detail-title">상세정보</p>
+                <p class="detail-content">
+                </p>
+            </div>
+            <div th:if="${!dto.content.isEmpty() && !dto.content.contains('<p>x</p>')}" class="exp-content-con">
+                <p class="content-title">체험내용</p>
+                <div class="content-detail">
+                </div>
+            </div>
+            <div th:if="${!dto.warning.isEmpty() && !dto.warning.contains('<p>x</p>')}" class="warning-con">
+                <p class="warning-title">유의사항</p>
+                <div class="warning-list">
+                </div>
+            </div>
+            <div class="map-con">
+                <div class="map-container" th:attr="data-l=${dto.latitude},data-h=${dto.hardness}">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="info-list-con">
+                <ul class="info-list">
+                    <li>
+                        <p>문의 번호</p>
+                        <span>[[${dto.tel}]]</span>
+                    </li>
+                    <li>
+                        <p>홈페이지</p>
+                        <span>[[${dto.link}]]</span>
+                    </li>
+                    <li>
+                        <p>주소</p>
+                        <span>[[${dto.place}]]</span>
+                    </li>
+                    <li>
+                        <p>이용시간</p>
+                        <span>[[${dto.time}]]</span>
+                    </li>
+                    <li>
+                        <p>입장료</p>
+                        <span th:each="dto, state : ${dto}" th:text="${dto.price != 0} ? ${#numbers.formatInteger(dto.price, 3, 'COMMA') + '원'} : '요금없음'"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tag-con">
+                <div class="tag" th:each="taglist : ${taglist}">[[${taglist}]]</div>
+            </div>
+        </div>
+        <div class="review-con">
+            <div class="review-top">
+                <p>리뷰<span> [[${#lists.size(review)}]]</span></p>
+            </div>
+            <div class="review-list-con">
+                <div th:if="${#lists.size(review) != 0}" th:each="review: ${review}" class="review">
+                    <div class="review-info-con">
+                        <div class="review-info">
+                            <div class="profile-img">
+                                <img src="/img/profile.png" alt="profile" />
+                            </div>
+                            <div class="info-con">
+                                <p class="user-nick">[[${review.u_nick}]]</p>
+                                <div class="star-date-con">
+                                    <div class="star-con">
+                                        <div th:if="${review.star != 0}" th:each="num : ${#numbers.sequence(1, review.star)}">
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div th:if="${5 - review.star != 0}" th:each="num : ${#numbers.sequence(1, (5 - review.star))}">
+                                             <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="review-date">[[${review.date}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 로그인 했을 때만 보이게 -->
+                        <!-- 추후에 리뷰 작성 유저랑 같은 아이디로 로그인 했을 때만 보이도록 수정 예정 -->
+                        <div class="review-btn-con" sec:authorize="isAuthenticated()">
+                            <button th:data-idx="${review.idx}" class="btn-modify">수정</button>
+                            <button th:data-idx="${review.idx}" class="btn-del">삭제</button>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p class="content">[[${review.content}]]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-scroll-con">
+        <div class="scroll">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    const detail = [[${dto.detail}]]
+    const content = [[${dto.content}]]
+    const warning = [[${dto.warning}]]
+    document.querySelector('.detail-content').innerHTML = detail;
+    // content, warning은 <p>태그로 줄 구분 하게 하고 그 앞에 list 형태로 효과 넣어줬기 때문에 한줄로만 작성되어 있는 문자열을 <p>태그로 감싸주기 위함
+    document.querySelector('.content-detail').innerHTML = `${content.toString().includes('<p>') ? content : `<p>${content}</p>`}`;
+    document.querySelector('.warning-list').innerHTML = `${warning.toString().includes('<p>') ? warning : `<p>${warning}</p>`}`;
+
+</script>
+</body>
+</html>

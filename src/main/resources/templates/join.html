@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link defer rel="stylesheet" th:href="@{/css/join.css}" />
+  <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+  <script defer th:src="@{/js/join.js}"></script>
+  <script
+          src="https://kit.fontawesome.com/082a4accbb.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<div class="container">
+  <div class="logo-con">
+    <div class="logo-align">
+      <a href="/"><img th:src="@{/img/logo/logo.svg}" alt="" /></a>
+    </div>
+  </div>
+  <div class="join-con">
+    <form th:action="@{/join}" th:method="post" id="joinform">
+      <div class="join-input-id">
+        <div class="id-align">
+          <i class="fa-regular fa-envelope"></i>
+          <input class="input-id" type="text" placeholder="이메일" />
+          <span>@</span>
+          <select class="select-email-domain">
+            <option
+                    value="none"
+                    selected
+                    disabled
+                    hidden
+                    style="color: #a6a6a6"
+            >
+              도메인 선택
+            </option>
+            <option value="naver.com">naver.com</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="daum.net">daum.net</option>
+            <option value="nate.com">nate.com</option>
+            <option value="gmail.com">gmail.com</option>
+            <option value="otherDomains">직접 입력</option>
+          </select>
+          <input type="text" class="other-domains" />
+          <button class="btn-dupli" type="button">중복확인</button>
+        </div>
+        <!-- <button class="btn-dupli" type="button">중복확인</button> -->
+        <p class="id-warning" style="visibility:hidden">아이디를 입력해주세요</p>
+        <!-- <p class="id-warning"></p> -->
+      </div>
+      <div class="join-input-pw">
+        <div class="pw-align">
+          <i class="fa-solid fa-lock"></i>
+          <input class="input-pw" name="pw" type="password" placeholder="비밀번호"/>
+          <div class="pw-show">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <p class="pw-warning" style="visibility:hidden"></p>
+        <!-- <p class="pw-warning"></p> -->
+      </div>
+      <div class="join-input-pw-check">
+        <div class="pw-check-align">
+          <i class="fa-solid fa-lock"></i>
+          <input
+                  class="input-pw-check"
+                  type="password"
+                  placeholder="비밀번호 확인"
+          />
+          <div class="pw-check-show">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <p class="pw-check-warning" style="visibility:hidden">비밀번호가 서로 다릅니다!</p>
+        <!-- <p class="pw-check-warning"></p> -->
+      </div>
+      <div class="join-input-name">
+        <i class="fa-regular fa-user"></i>
+        <input class="input-name" name="name" type="text" placeholder="이름" />
+      </div>
+      <div class="join-input-nick">
+        <i class="fa-regular fa-user"></i>
+        <input class="input-nick" name="nick" type="text" placeholder="닉네임" />
+      </div>
+      <div class="join-input-birth">
+        <div class="birth-align">
+          <i class="fa-regular fa-calendar"></i>
+          <input
+                  class="input-birth-year input-birth"
+                  type="text"
+                  placeholder="년(4자)"
+                  maxlength="4"
+          />
+          <select class="input-birth-month input-birth">
+            <option
+                    value=""
+                    selected
+                    disabled
+                    hidden
+                    style="color: #a6a6a6"
+            >
+              월
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <input
+                  class="input-birth-day"
+                  type="text"
+                  placeholder="일"
+                  maxlength="2"
+          />
+        </div>
+        <p class="birth-warning" style="visibility:hidden">생년월일 : 경고입니다.</p>
+        <!-- 나중에 방식 확정되면 넣기 -->
+      </div>
+      <div class="join-input-gender">
+        <div class="gender-align">
+          <input
+                  type="radio"
+                  name="gender"
+                  class="input-gender1"
+                  value="M"
+                  id="gender1"
+          />
+          <label for="gender1">남자</label>
+          <input
+                  type="radio"
+                  name="gender"
+                  class="input-gender2"
+                  value="F"
+                  id="gender2"
+          />
+          <label for="gender2">여자</label>
+        </div>
+      </div>
+      <div class="join-input-tel">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <input
+                class="input-tel"
+                name="tel"
+                type="tel"
+                placeholder="휴대전화번호"
+                maxlength="13"
+        />
+        <input type="hidden" id="hiddenDateField" name="birth" /> <!--생일 date type에 들어가게 변형한 것-->
+        <input type="hidden" id="hiddenIdField" name="id" /> <!--아이디+이메일 합친 것-->
+        <input type="hidden" id="hiddenF_listField" name="f_list" value=" " /> <!--fes_tag 기본값-->
+        <input type="hidden" id="hiddenE_listField" name="e_list" value=" " /> <!--exp_tag 기본값-->
+      </div>
+      <p class="total-warning" style="visibility:hidden">전체: 경고입니다.</p>
+      <div class="join-btn-con">
+        <button class="btn-join" type="submit">회원가입</button>
+        <button class="btn-close" type="button">뒤로가기</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

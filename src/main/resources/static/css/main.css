@@ -1,0 +1,421 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&display=swap');
+
+:root {
+    --header-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard';
+}
+
+a {
+    all: unset;
+}
+
+/* (main) slider */
+.main {
+    width: 100%;
+}
+
+.main .show-align {
+    width: 100%;
+    /* 자식 요소에 absolute가 생겨버리면 그 자식요소는 공중에 고정 느낌인 거라서 부모 요소 height은 없는게 되어버리기 때문에 height값 지정 필요!! */
+    height: 600px;
+    position: relative;
+    background-color: #FDF5DC;
+}
+
+.main .show-align .show-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* (main) slider - contents */
+
+.main .show-align .show-container .show-contents-align {
+    width: 22%;
+    position: absolute;
+    top: 7rem;
+    left: 30%;
+    overflow: hidden;
+}
+
+.main .show-align .show-container .show-contents-align .contents {
+    display: flex;
+    /* width: 120vw; */
+}
+
+.main
+.show-align
+.show-container
+.show-contents-align
+.contents
+.content-slider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: inset 0 0 10px red; */
+}
+
+.main
+.show-align
+.show-container
+.show-contents-align
+.contents
+.content-slider
+.area {
+    width: fit-content;
+    background-color: black;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+.main
+.show-align
+.show-container
+.show-contents-align
+.contents
+.content-slider
+.area
+> p {
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 500;
+    font-size: 1.15rem;
+}
+
+.main
+.show-align
+.show-container
+.show-contents-align
+.contents
+.content-slider
+.title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.main
+.show-align
+.show-container
+.show-contents-align
+.contents
+.content-slider
+.btn-detail {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 2rem;
+    font-size: 1.05rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid black;
+}
+
+/* (main) slider - img */
+
+.main .show-align .show-container .show-img-align {
+    width: 45%;
+    position: absolute;
+    top: 7rem;
+    right: 0rem;
+    overflow: hidden;
+}
+
+.main .show-align .show-container .show-img {
+    cursor: pointer;
+    /* width: 135vw; */
+    display: flex;
+}
+
+.main .show-align .show-container .show-img .img-slider {
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 0 0.5rem 0 1.5rem;
+}
+
+.main .show-align .show-container .show-img .img-slider img {
+    width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+.main .show-slider-container .slider-control {
+    width: 100%;
+    display: flex;
+    /* justify-content: right; */
+}
+
+.main .show-slider-container .slider-control .slider-align {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 1.5rem 0;
+}
+
+.main .show-slider-container .slider-control .slider-align .state-align {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.state-align
+.state-bar-container {
+    width: 150px;
+    height: fit-content;
+    background-color: #ddd;
+    border-radius: 2rem;
+    overflow: hidden;
+    /* box-shadow: inset 0 0 10px red; */
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.state-align
+.state-bar-container
+.state-bar {
+    width: 0%;
+    height: 4px;
+    background-color: #333;
+    /* transition: width 0s; */
+    /* box-shadow: inset 0 0 10px blue; */
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.state-align
+.state-bar-container
+.state-bar.full {
+    /* width: 100%;
+    transition: width 6s linear; */
+    animation-name: loading;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.state-align
+.control-state
+.state {
+    font-weight: bold;
+}
+
+.main .show-slider-container .slider-control .slider-align .control-align {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.control-left,
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.control-right {
+    all: unset;
+    /* cursor: pointer; */
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-arrow-left,
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-arrow-right {
+    color: #444;
+}
+
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-arrow-left,
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-pause,
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-play,
+.main
+.show-slider-container
+.slider-control
+.slider-align
+.control-align
+.fa-arrow-right {
+    cursor: pointer;
+}
+
+/* (main) - tag */
+
+.main .tag-container {
+    width: 100%;
+    margin-top: 7rem;
+    /* 이 부분은 나중에 꼭 수정하기 */
+    margin-bottom: 15rem;
+}
+
+.main .tag-container .tag-align {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main .tag-container .tag-align:nth-child(2) {
+    margin-top: 5rem;
+    padding-top: 5rem;
+    border-top: 1px solid #dadada;
+}
+
+.main .tag-container .tag-align .tag-name {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.main .tag-container .tag-align .tag-contents-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.main .tag-container .tag-align .tag-contents-container .tag-contents {
+    cursor: pointer;
+    width: 24%;
+    margin: 2rem 0;
+    transition: transform 0.2s;
+}
+
+.main .tag-container .tag-align .tag-contents-container .tag-contents:hover {
+    transform: translateY(-5%);
+    transition: 0.5s;
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-img-con {
+    width: 100%;
+    position: relative;
+    /* border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem; */
+    border-radius: 0.7rem;
+    overflow: hidden;
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-img-con
+.tag-area {
+    width: fit-content;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
+    box-shadow: 4px 12px 20px -4px rgba(145, 145, 145, 0.24);
+    -webkit-box-shadow: 4px 12px 20px -4px rgba(145, 145, 145, 0.24);
+    -moz-box-shadow: 4px 12px 20px -4px rgba(145, 145, 145, 0.24);
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-img-con
+img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-info-con {
+    width: 100%;
+    text-align: center;
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-info-con
+.info-title {
+    font-weight: bolder;
+    font-size: 1.1rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.main
+.tag-container
+.tag-align
+.tag-contents-container
+.tag-contents
+.tag-info-con
+.info-area {
+    color: #555;
+}
+
+@keyframes loading {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}

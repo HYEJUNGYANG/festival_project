@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 리뷰 수정일 때는 제목 수정으로 바뀌게 -->
+    <title>리뷰 작성</title>
+    <link rel="stylesheet" th:href="@{/css/mypage/review-write.css}" />
+    <link rel="icon" type="image/ico" th:href="@{/img/icon/favicon.ico}">
+    <script defer th:src="@{/js/mypage/review-write.js}"></script>
+    <script
+      src="https://kit.fontawesome.com/082a4accbb.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <p th:if="${requestURI == '/mypage/review/write'}">리뷰작성하기</p>
+      <p th:if="${requestURI == '/mypage/review/modify'}">리뷰수정하기</p>
+    </header>
+    <div class="main-container">
+      <form th:data-star="${requestURI == '/mypage/review/modify'} ? ${dto.getStar()} : 0" class="align-con" id="form" th:method="post">
+        <p th:data-idx="${dto.e_idx}" class="e-name">[[${dto.e_name}]]</p>
+        <div class="info-con">
+          <div class="star-con" th:if="${requestURI == '/mypage/review/modify'}">
+
+
+            <div th:if="${dto.star != 0}" th:each="num : ${#numbers.sequence(1, dto.star)}">
+              <div class="star" data-star="${dto.star}">
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div th:if="${5 - dto.star != 0}" th:each="num : ${#numbers.sequence(1, (5 - dto.star))}">
+              <div class="star" data-star="(5-${dto.star})">
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+
+          </div>
+          <div class="star-con" th:if="${requestURI == '/mypage/review/write'}" >
+          <div class="star" data-star="1">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <div class="star" data-star="2">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <div class="star" data-star="3">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <div class="star" data-star="4">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <div class="star" data-star="5">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          </div>
+
+          <div class="date-con">
+            <p th:if="${requestURI == '/mypage/review/modify'}">[[${dto.date}]]</p>
+          </div>
+        </div>
+        <div class="input-con">
+
+          <textarea
+            class="input-txt"
+            maxlength="150"
+            placeholder="리뷰 내용을 작성해주세요."
+            name="content"
+            th:if="${requestURI == '/mypage/review/write'}"
+          ></textarea>
+          <textarea
+                  class="input-txt"
+                  maxlength="150"
+                  placeholder="리뷰 내용을 작성해주세요."
+                  name="content"
+                  th:if="${requestURI == '/mypage/review/modify'}" th:text="${dto.content}"
+          ></textarea>
+
+        </div>
+        <div class="char-num">
+          <p><span>0</span> / 150</p>
+        </div>
+        <div class="btn-con">
+          <!-- 수정 버튼 눌러서 창 띄웠을 땐 이 버튼 등록이 아닌 수정으로 변경 -->
+          <button type="button" class="btn-submit">등록</button>
+          <button type="button" class="btn-close">취소</button>
+
+        </div>
+      </form>
+    </div>
+
+  </body>
+</html>
